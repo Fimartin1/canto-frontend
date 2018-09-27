@@ -2,7 +2,7 @@ package forms
 
 import play.api.libs.json.Json
 import support.UnitSpec
-import forms.MessageInputForm.messageInputForm
+import .messageInputForm
 import models.MessageInput
 import play.api.data.FormError
 

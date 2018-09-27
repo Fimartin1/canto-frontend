@@ -6,10 +6,10 @@ import play.api.test._
 
 import scala.concurrent.{ExecutionContext, Future}
 
-class TemplateControllerSpec extends ControllerTestResources {
+class HomeControllerSpec extends ControllerTestResources {
 
   private val mockSomeServiceConnector = mock[SomeServiceConnector]
-  private val templateController = new TemplateController(mockSomeServiceConnector, messagesApi, mockCC)
+  private val templateController = new HomeController(mockSomeServiceConnector, messagesApi, mockCC)
 
   "TemplateController GET /" should {
 

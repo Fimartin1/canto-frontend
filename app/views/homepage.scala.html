@@ -1,26 +1,45 @@
-@import helper._
-@import models.MessageInput
+@()(implicit request: Request[_], messages: Messages)
 
-@(messageInputForm: Form[MessageInput], message: String)(implicit request: Request[_], messages: Messages)
+@main("Home") {
+    <div class="column-full">
 
-    @main("Home") {
-        <h1>Welcome to Template Frontend!</h1>
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="@routes.HomeController.getHomepage()">@Messages("nav.home")</a></li>
+            <li role="presentation"><a href="#">@Messages("nav.positive")</a></li>
+            <li role="presentation"><a href="#">@Messages("nav.neutral")</a></li>
+            <li role="presentation"><a href="#">@Messages("nav.negative")</a></li>
+        </ul>
 
-        @if(message.nonEmpty) {
-            <p>Response: @message</p>
-        }
+        <hr>
 
-        @if(messageInputForm.hasErrors) {
-            <ul>
-                @messageInputForm.errors.map { error =>
-                  <li>@Messages(error.message)</li>
-                }
-            </ul>
-        }
+        <h1>@Messages("homepage.title")</h1>
 
-        @form(action = routes.TemplateController.submitMessage) {
-            <p>Enter your text: </p>
-            <input type="text" id="@{messageInputForm("message").id}" name="@{messageInputForm("message").label}">
-            <button type="submit">Test</button>
-        }
-    }
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-">
+                    <canvas id="pie-chart" width="200" height="75"></canvas>
+                    <script>
+                            new Chart(document.getElementById("pie-chart"), {
+                                type: 'pie',
+                                data: {
+                                    labels: ["Positive", "Negative", "Neutral"],
+                                    datasets: [{
+                                        label: "Population (millions)",
+                                        backgroundColor: ["#0ef238", "#e03b11", "#f0ff23"],
+                                        data: [40, 30, 20]
+                                    }]
+                                },
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: 'Sentiment %'
+                                    }
+                                }
+                            });
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
