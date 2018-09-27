@@ -1,14 +1,12 @@
 package models
 
-import java.time.LocalDate
+import play.api.libs.json.{Json, OFormat}
 
-import play.api.libs.json.Json
-
-case class ConfidenceLevel(averagePositiveConfidence: Double,
-                           averageNeutralConfidence: Double,
-                           averageNegativeConfidence: Double,
+case class ConfidenceLevel(averagePositiveConfidence: Option[Double],
+                           averageNeutralConfidence: Option[Double],
+                           averageNegativeConfidence: Option[Double],
                            time_zone: Option[String])
 
 object ConfidenceLevel {
-  implicit val formats = Json.format[ConfidenceLevel]
+  implicit val formats: OFormat[ConfidenceLevel] = Json.format[ConfidenceLevel]
 }
