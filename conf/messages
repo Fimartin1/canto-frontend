@@ -1,1 +1,9 @@
-template.message-input.form.need-value=You must enter a value
+#Nav bar
+
+nav.home=Home
+nav.positive=Positive
+nav.neutral=Neutral
+nav.negative=Negative
+
+#Homepage
+homepage.title=Twitter Sentiment Dashboard
