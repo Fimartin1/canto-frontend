@@ -1,4 +1,7 @@
-@()(implicit request: Request[_], messages: Messages)
+@(backendResponse: BackendResponse,
+        positivePct: Double,
+        neutralPct: Double,
+        negativePct: Double)(implicit request: Request[_], messages: Messages)
 
 @main("Home") {
     <div class="column-full">
@@ -26,7 +29,7 @@
                                     datasets: [{
                                         label: "Population (millions)",
                                         backgroundColor: ["#0ef238", "#e03b11", "#f0ff23"],
-                                        data: [40, 30, 20]
+                                        data: [@positivePct, @neutralPct, @negativePct]
                                     }]
                                 },
                                 options: {

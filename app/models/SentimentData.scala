@@ -1,8 +1,12 @@
 package models
 
-import java.time.LocalDate
+import play.api.libs.json.Json
 
-case class SentimentData(createAt: LocalDate,
-                         confidenceLevel: Int,
-                         tagName: String,
+case class SentimentData(created_at: String,
+                         confidence: Double,
+                         tag_name: String,
                          text: String)
+
+object SentimentData {
+  implicit val formats = Json.format[SentimentData]
+}
