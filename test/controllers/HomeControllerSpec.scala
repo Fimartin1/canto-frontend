@@ -16,7 +16,7 @@ class HomeControllerSpec extends ControllerTestResources {
     SentimentData("", 2.2, "", ""),
     SentimentData("", 2.2, "", ""),
     SentimentData("", 2.2, "", ""))
-  private val confidenceLevel = ConfidenceLevel(2.2, 2.2, 2.2, None)
+  private val confidenceLevel = ConfidenceLevel(Some(2.2), Some(2.2), Some(2.2), None)
   private val cantoResponse = BackendResponse(sentimentData, confidenceLevel)
 
   "TemplateController GET /" should {
